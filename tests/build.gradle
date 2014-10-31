@@ -1,0 +1,26 @@
+apply plugin: 'java'
+
+dependencies {
+
+    def androidModule = project(':app')
+    compile androidModule
+
+    testCompile androidModule.android.applicationVariants.toList().first().javaCompile.classpath
+    testCompile androidModule.android.applicationVariants.toList().first().javaCompile.outputs.files
+    testCompile files(androidModule.plugins.findPlugin("com.android.application").getBootClasspath())
+
+    testCompile 'junit:junit:4.+'
+    testCompile 'org.robolectric:robolectric:2.2'
+
+/*
+    compile ('org.roboguice:roboguice:2.0') {
+        exclude module: 'asm'
+    }
+*/
+}
+
+tasks.withType(Test) {
+    scanForTestClasses = false
+    include "**/*Test.class"
+    include "**/*Tests.class"
+}
