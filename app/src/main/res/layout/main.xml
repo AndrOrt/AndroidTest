@@ -12,6 +12,7 @@
         android:text="Large Text"
         bind:text="{message}" />
     <ListView
+        android:id="@+id/contactsView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         bind:itemLayout="@android:layout/simple_list_item_1"

@@ -1,7 +1,10 @@
 package com.example.andre_000.msgtest;
 
-import android.os.Bundle;
+import android.database.Cursor;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.support.v7.app.ActionBarActivity;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import com.example.andre_000.msgtest.presentation.MainPresenter;
@@ -18,6 +21,8 @@ public class MainActivity2 extends ActionBarActivity implements MainView {
 
     @ViewById
     TextView welcomeMessageView;
+    @ViewById
+    ListView contactsView;
 
     @AfterViews
     public void initialize() {
@@ -34,4 +39,18 @@ public class MainActivity2 extends ActionBarActivity implements MainView {
     public void setWelcomeMessage(String message) {
         welcomeMessageView.setText(message);
     }
+
+    @Override
+    public void setContacts(Cursor contacts) {
+
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(
+                this,
+                android.R.layout.simple_list_item_1,
+                contacts,
+                new String[] { Phone.DISPLAY_NAME },
+                new int[] { android.R.id.text1 });
+
+        contactsView.setAdapter(adapter);
+    }
+
 }
