@@ -3,7 +3,7 @@ apply plugin: 'android-apt'
 
 def AAVersion = '3.1'
 def RobobindingVersion = '0.8.9'
-def RoboGuiceVersion = '2.0'
+def RoboGuiceVersion = '3.0'
 
 android {
     compileSdkVersion 21
@@ -32,6 +32,7 @@ dependencies {
 
     compile 'com.android.support:appcompat-v7:21.0.0'
     compile "org.roboguice:roboguice:$RoboGuiceVersion"
+    provided "org.roboguice:roboblender:$RoboGuiceVersion"
     compile "org.robobinding:robobinding:$RobobindingVersion"
     compile "org.androidannotations:androidannotations-api:$AAVersion"
 }

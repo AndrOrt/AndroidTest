@@ -1,15 +1,15 @@
 package com.example.andre_000.msgtest;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 
 import com.example.andre_000.msgtest.presentation.MainPresentationModel;
-import com.example.andre_000.msgtest.roboguice.RoboActionBarActivity;
 import com.google.inject.Inject;
 
 import org.androidannotations.annotations.EActivity;
 import org.robobinding.binder.Binders;
+
+import roboguice.activity.RoboActionBarActivity;
 
 @EActivity
 public class MainActivity extends RoboActionBarActivity {
