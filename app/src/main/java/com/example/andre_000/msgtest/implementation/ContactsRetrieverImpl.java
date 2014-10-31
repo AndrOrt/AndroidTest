@@ -27,8 +27,13 @@ public class ContactsRetrieverImpl implements ContactsRetriever, LoaderManager.L
 
     @Override
     public TypedCursor<String> getAll() {
-        Cursor cursor = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                new String[] {Phone._ID, Phone.DISPLAY_NAME, Phone.NUMBER}, null, null,  Phone.DISPLAY_NAME + " ASC");
+        Cursor cursor = contentResolver.query(
+                ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                new String[] { Phone._ID, Phone.DISPLAY_NAME },
+                ContactsContract.Contacts.HAS_PHONE_NUMBER + "=1",
+                null,
+                Phone.DISPLAY_NAME + " ASC");
+
         return new TypedCursorAdapter<String>(cursor, new ContactRowMapper());
     }
 

@@ -21,8 +21,12 @@ public class MainPresenter {
     private Cursor getContacts() {
         Cursor cursor = mainView
                 .getContentResolver()
-                .query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                    new String[] {Phone._ID, Phone.DISPLAY_NAME, Phone.NUMBER}, null, null,  ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC");
+                .query(
+                    ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                    new String[] { Phone._ID, Phone.DISPLAY_NAME },
+                    ContactsContract.Contacts.HAS_PHONE_NUMBER + "=1",
+                    null,
+                    Phone.DISPLAY_NAME + " ASC");
 
         return cursor;
     }

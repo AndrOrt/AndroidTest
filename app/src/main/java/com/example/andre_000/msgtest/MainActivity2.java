@@ -47,7 +47,7 @@ public class MainActivity2 extends ActionBarActivity implements MainView {
                 this,
                 android.R.layout.simple_list_item_1,
                 contacts,
-                new String[] { Phone.DISPLAY_NAME },
+                new String[] { contacts.getColumnName(0) },
                 new int[] { android.R.id.text1 });
 
         contactsView.setAdapter(adapter);
