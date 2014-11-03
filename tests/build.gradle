@@ -10,16 +10,15 @@ dependencies {
     testCompile files(androidModule.plugins.findPlugin("com.android.application").getBootClasspath())
 
     testCompile 'junit:junit:4.+'
-    testCompile 'org.robolectric:robolectric:2.2'
-
-/*
-    compile ('org.roboguice:roboguice:2.0') {
-        exclude module: 'asm'
+    testCompile ('org.robolectric:robolectric:2.3') {
+        exclude module: 'support-v13'
+        exclude module: 'support-v4'
     }
-*/
+
 }
 
 tasks.withType(Test) {
+    jvmArgs "-XX:-UseSplitVerifier"
     scanForTestClasses = false
     include "**/*Test.class"
     include "**/*Tests.class"

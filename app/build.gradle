@@ -25,6 +25,7 @@ android {
 }
 
 dependencies {
+
     apt "org.robobinding:codegen:$RobobindingVersion"
     apt "org.androidannotations:androidannotations:$AAVersion"
 
